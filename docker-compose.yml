@@ -1,0 +1,51 @@
+name: nusantara-insurance-demo
+
+x-app: &app
+  image: nusantara-insurance-demo:local
+  build: ./app
+  restart: unless-stopped
+  networks: [docker_default]
+  environment: &env
+    GATEWAY_URL: http://apim-gateway:8082
+    AM_TOKEN_URL: http://gateway:8092/gamma/oauth/token
+    TOWER_URL: http://nusantara-control-tower:8830
+
+services:
+  nusantara-policy-mcp:
+    <<: *app
+    container_name: nusantara-policy-mcp
+    command: python -m nusantara_demo.policy_mcp
+    ports: ["8831:8831"]
+
+  nusantara-mock-qwen:
+    <<: *app
+    container_name: nusantara-mock-qwen
+    command: python -m nusantara_demo.mock_llm
+    environment:
+      PORT: "8832"
+      MOCK_LLM_ROLE: qwen
+    ports: ["8832:8832"]
+
+  nusantara-mock-cloud:
+    <<: *app
+    container_name: nusantara-mock-cloud
+    command: python -m nusantara_demo.mock_llm
+    environment:
+      PORT: "8833"
+      MOCK_LLM_ROLE: cloud
+    ports: ["8833:8833"]
+
+  nusantara-control-tower:
+    <<: *app
+    container_name: nusantara-control-tower
+    command: python -m nusantara_demo.tower
+    environment:
+      <<: *env
+    volumes:
+      - ./app/nusantara_demo/static:/app/nusantara_demo/static
+    ports: ["8830:8830"]
+
+networks:
+  docker_default:
+    external: true
+    name: docker_default

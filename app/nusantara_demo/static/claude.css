@@ -1,0 +1,63 @@
+.claude-layout { min-height: 100vh; }
+.claude-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: #1a1a2e;
+  color: #fff;
+}
+.claude-header .logo { background: #d4a574; color: #1a1a2e; }
+.claude-header .sub { color: rgba(255,255,255,0.85); max-width: 28rem; }
+.claude-nav { display: flex; align-items: center; gap: 1rem; font-size: 0.9rem; }
+.claude-nav a { color: #d4a574; }
+.claude-nav select { margin-left: 0.35rem; border-radius: 6px; padding: 0.25rem; }
+
+.claude-main {
+  display: grid;
+  grid-template-columns: 1fr min(420px, 38vw);
+  gap: 0;
+  min-height: calc(100vh - 72px);
+}
+@media (max-width: 960px) {
+  .claude-main { grid-template-columns: 1fr; }
+}
+.claude-chat {
+  padding: 1rem 1.25rem;
+  border-right: 1px solid var(--border);
+}
+.policy-aside {
+  padding: 1rem 1.25rem;
+  background: #faf8f5;
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+}
+.present-tip {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+  padding: 0.5rem 0.65rem;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.policy-panel { font-size: 0.88rem; }
+.policy-tx { margin-bottom: 0.75rem; word-break: break-all; }
+.policy-links a { color: var(--red-dark); font-weight: 600; }
+.policy-hint { font-size: 0.78rem; color: var(--muted); margin: 0.5rem 0 1rem; }
+.policy-section { font-size: 0.85rem; margin: 1rem 0 0.35rem; }
+.policy-section.applied { color: #0d47a1; }
+.policy-section.blocked { color: var(--red-dark); }
+.policy-section.watch { color: var(--muted); }
+.policy-list { list-style: none; padding: 0; margin: 0; }
+.policy-list li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.policy-name { display: block; font-weight: 600; }
+.policy-detail { display: block; font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+.policy-catalog { margin-top: 1rem; font-size: 0.8rem; }
+.policy-catalog ul { padding-left: 1.1rem; }
