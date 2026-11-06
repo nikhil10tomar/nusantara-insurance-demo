@@ -2,6 +2,8 @@
 
 Custom local Gamma demo for an Indonesian insurer narrative: **OJK / PDP Law**, **NIK & policy PII**, staff vs **Claude Code** developer paths, **Qwen on-prem + Claude/GPT/Gemini**, prompt injection & domain blocking, **Budget-Wise** spend caps.
 
+**New to this repo?** Start with **[TEAM_SETUP.md](TEAM_SETUP.md)** — prerequisites for cloning and running on another laptop, including Gamma ports and the **ACME Hotels LLMs** dependency.
+
 ## Prerequisites
 
 - Local Gamma stack on `docker_default` (gateway `:8082`, APIM `:8083`, AM `:8092` / `:8093`).
@@ -11,7 +13,8 @@ Custom local Gamma demo for an Indonesian insurer narrative: **OJK / PDP Law**, 
 ## Install
 
 ```bash
-cd ~/working_directory/gamma-demo/nusantara-insurance-demo
+git clone https://github.com/<your-org>/nusantara-insurance-demo.git
+cd nusantara-insurance-demo
 chmod +x setup.sh
 ./setup.sh
 ```
